@@ -1,6 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { AxiosResponse } from 'axios';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CatsService } from './cats.service';
 
 interface Cat {
@@ -16,5 +15,10 @@ export class CatsController {
   @Get()
   getCats(@Query('breed_name') breed_name): Observable<any> {
     return this.catsService.getCats(breed_name);
+  }
+
+  @Get('all')
+  getAll(): Observable<any> {
+    return this.catsService.getAll();
   }
 }
